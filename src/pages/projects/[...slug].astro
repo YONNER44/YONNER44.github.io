@@ -18,6 +18,18 @@ export async function getStaticPaths() {
 // Get the requested project
 type Props = CollectionEntry<"projects">
 const project = Astro.props
+
+// Redirigir a las vistas personalizadas
+const projectRoutes: Record<string, string> = {
+	"project-1": "/projects/intenrship",
+	"project-2": "/projects/dsx",
+	"project-3": "/projects/div-manager",
+}
+
+if (projectRoutes[project.slug]) {
+	return Astro.redirect(projectRoutes[project.slug])
+}
+
 const { title, summary } = project.data
 ---
 

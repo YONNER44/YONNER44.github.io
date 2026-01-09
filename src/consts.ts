@@ -2,51 +2,51 @@ import type { Site, Page, Links, Socials } from "@types"
 
 // Global
 export const SITE: Site = {
-  TITLE: "Astro Sphere",
-  DESCRIPTION: "Welcome to Astro Sphere, a portfolio and blog for designers and developers.",
-  AUTHOR: "Mark Horn",
+  TITLE: "Arca Software",
+  DESCRIPTION: "Bienvenido a Arca Software, un portafolio de diseñador y desarrollador.",
+  AUTHOR: "Yonner Vargas",
 }
 
 // Work Page
 export const WORK: Page = {
-  TITLE: "Work",
-  DESCRIPTION: "Places I have worked.",
+  TITLE: "Trabajo",
+  DESCRIPTION: "Lugares donde he trabajado.",
 }
 
 // Blog Page
 export const BLOG: Page = {
-  TITLE: "Blog",
-  DESCRIPTION: "Writing on topics I am passionate about.",
+  TITLE: "Cv",
+  DESCRIPTION: "Detalles del currículum vitae.",
 }
 
 // Projects Page 
 export const PROJECTS: Page = {
-  TITLE: "Projects",
-  DESCRIPTION: "Recent projects I have worked on.",
+  TITLE: "Proyectos",
+  DESCRIPTION: "Proyectos recientes en los que he trabajado.",
 }
 
 // Search Page
 export const SEARCH: Page = {
-  TITLE: "Search",
-  DESCRIPTION: "Search all posts and projects by keyword.",
+  TITLE: "Buscar",
+  DESCRIPTION: "Buscar todos los posts y proyectos por palabra clave.",
 }
 
 // Links
 export const LINKS: Links = [
   { 
-    TEXT: "Home", 
+    TEXT: "Inicio", 
     HREF: "/", 
   },
   { 
-    TEXT: "Work", 
+    TEXT: "Trabajo", 
     HREF: "/work", 
   },
   { 
-    TEXT: "Blog", 
+    TEXT: "Cv", 
     HREF: "/blog", 
   },
   { 
-    TEXT: "Projects", 
+    TEXT: "Proyectos", 
     HREF: "/projects", 
   },
 ]
@@ -56,26 +56,20 @@ export const SOCIALS: Socials = [
   { 
     NAME: "Email",
     ICON: "email", 
-    TEXT: "markhorn.dev@gmail.com",
-    HREF: "mailto:markhorn.dev@gmail.com",
+    TEXT: "yonnervargasbernate7@gmail.com",
+    HREF: "mailto:yonnervargasbernate7@gmail.com",
   },
   { 
     NAME: "Github",
     ICON: "github",
-    TEXT: "markhorn-dev",
-    HREF: "https://github.com/markhorn-dev/astro-sphere"
+    TEXT: "YONNER44",
+    HREF: "https://github.com/YONNER44",
   },
   { 
     NAME: "LinkedIn",
     ICON: "linkedin",
-    TEXT: "markhorn-dev",
-    HREF: "https://www.linkedin.com/in/markhorn-dev/",
-  },
-  { 
-    NAME: "Twitter",
-    ICON: "twitter-x",
-    TEXT: "markhorn_dev",
-    HREF: "https://twitter.com/markhorn_dev",
+    TEXT: "yonnervargasbernate",
+    HREF: "https://www.linkedin.com/in/yonnervargas",
   },
 ]
 

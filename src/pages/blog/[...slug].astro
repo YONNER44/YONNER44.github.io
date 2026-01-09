@@ -19,6 +19,11 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">
 const post = Astro.props
 const { title, summary } = post.data
+
+// Si es el CV, redirigir a /cv
+if (post.slug === "curriculum-vitae") {
+	return Astro.redirect("/cv")
+}
 ---
 
 <PageLayout title={title} description={summary}>

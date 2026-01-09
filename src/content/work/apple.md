@@ -1,11 +1,13 @@
 ---
-company: "Apple"
-role: "Software Engineer"
-dateStart: "01/01/2020"
-dateEnd: "11/27/2022"
+company: "Disruptive Information Technologies"
+role: "Desarrollador Frontend"
+dateStart: "09/01/2025"
+dateEnd: "Ahora"
 ---
 
-Voluptatem est quaerat voluptas praesentium ipsa dolorem dignissimos nulla ratione distinctio quae maiores eligendi nostrum? Quibusdam, debitis voluptatum, lorem ipsum dolor. Sit amet consectetur adipisicing elit. Iure illo neque tempora.
+Desarrollo de interfaces de usuario modernas y responsivas. Trabajo en remoto como prestador de servicios.
 
-- Sit amet consectetur adipisicing elit. Iure illo neque tempora.
-- Quibusdam, debitis voluptatum, lorem ipsum
+- Desarrollo de interfaces con React, Vue o frameworks modernos
+- Implementación de diseños responsivos con Tailwind CSS
+- Optimización de rendimiento frontend
+- Integración con APIs REST

@@ -1,10 +1,14 @@
 ---
-company: "Facebook"
-role: "Intern"
-dateStart: "07/01/2019"
-dateEnd: "12/31/2019"
+company: "Disruptive Information Technologies"
+role: "Desarrollador Frontend"
+dateStart: "06/01/2024"
+dateEnd: "11/30/2024"
 ---
 
-Iure illo neque tempora, voluptatem est quaerat voluptas praesentium ipsa dolorem dignissimos nulla ratione distinctio quae maiores eligendi nostrum? Quibusdam, debitis voluptatum, lorem ipsum dolor. Sit amet consectetur adipisicing elit.
+Experiencia práctica en desarrollo frontend y backend durante contrato de prácticas profesionales.
 
-- Sit amet consectetur adipisicing elit.
+- Maquetación y desarrollo de interfaces de usuario
+- Lider de proyecto
+- Aprendizaje de frameworks de JavaScript
+- Trabajo en equipo con diseñadores UI/UX
+- Conocimientos básicos de backend para integración con node.js y uso de base de datos con mongodb

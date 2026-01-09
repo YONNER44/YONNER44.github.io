@@ -1,11 +1,11 @@
 ---
-title: "Terms of Use"
-date: "03/07/2024"
+title: "Términos de Uso"
+date: "07/03/2024"
 ---
 
-Please read these Terms of Use ("Terms", "Terms of Use") carefully before using the [Your Website URL] website (the "Service") operated by [Your Company Name] ("us", "we", or "our").
+Por favor lee estos Términos de Uso ("Términos", "Términos de Uso") cuidadosamente antes de usar el sitio web [URL de tu Sitio Web] (el "Servicio") operado por [Nombre de tu Empresa] ("nosotros", "nos", o "nuestro").
 
-#### Agreement to Terms
+#### Acuerdo a los Términos
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet massa ut neque consequat congue. Sed id ipsum vitae sem imperdiet suscipit. Nulla facilisi. Morbi quis nibh at nunc pulvinar rhoncus. Proin porttitor dapibus dolor, id fermentum urna eleifend et. In feugiat pretium erat nec vestibulum.
 
 #### Intellectual Property Rights

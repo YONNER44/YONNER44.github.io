@@ -4,16 +4,18 @@ import { cn } from "@lib/utils"
 const { pathname } = Astro.url
 const subpath = pathname.match(/[^/]+/g)
 import Container from "@components/Container.astro"
+import { Image } from "astro:assets"
+import logo from "@assets/carca22.png"
 ---
 
 <header id="header" class="fixed top-0 w-full h-16 z-50 ">
   <Container size="md">
     <div class="relative h-full w-full">
       <div class="absolute left-0 top-1/2 -translate-y-1/2 flex gap-1 font-semibold">
-        <a href="/" class="flex gap-1 text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-          <svg class="size-6 fill-current">
-            <use href="/brand.svg#brand"></use>
-          </svg>
+        <a href="/" class="flex gap-3 items-center text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center bg-black dark:bg-transparent overflow-hidden">
+               <Image src={logo} alt="dsx Logo" width={44} height={44} class="w-12 h-12 object-contain p-1" />
+          </div>
           <div>
             {SITE.TITLE}
           </div>
@@ -24,7 +26,7 @@ import Container from "@components/Container.astro"
       <nav class="hidden md:flex items-center justify-center text-sm gap-1">
         {
           LINKS.map((LINK) => (
-            <a href={LINK.HREF} class={cn("h-8 rounded-full px-3 text-current", "flex items-center justify-center", "transition-colors duration-300 ease-in-out", pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF ? "bg-black dark:bg-white text-white dark:text-black" : "hover:bg-black/5 dark:hover:bg-white/20 hover:text-black dark:hover:text-white")}>
+            <a href={LINK.HREF} class={cn("h-8 rounded-full px-3 text-current", "flex items-center justify-center", "transition-colors duration-300 ease-in-out", pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF || (LINK.HREF === "/blog" && pathname === "/cv") ? "bg-black dark:bg-white text-white dark:text-black" : "hover:bg-black/5 dark:hover:bg-white/20 hover:text-black dark:hover:text-white")}>
               {LINK.TEXT}
             </a>
           ))

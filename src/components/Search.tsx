@@ -1,49 +1,53 @@
-import type { CollectionEntry } from "astro:content"
-import { createEffect, createSignal } from "solid-js"
-import Fuse from "fuse.js"
-import ArrowCard from "@components/ArrowCard"
-import SearchBar from "@components/SearchBar"
+import type { CollectionEntry } from "astro:content";
+import React, { useState, useEffect } from "react";
+import Fuse from "fuse.js";
+import ArrowCard from "@components/ArrowCard";
+import SearchBar from "@components/SearchBar";
 
 type Props = {
-  data: CollectionEntry<"blog">[]
-}
+  data: CollectionEntry<"blog">[];
+};
 
 export default function Search({ data }: Props) {
-  const [query, setQuery] = createSignal("")
-  const [results, setResults] = createSignal<CollectionEntry<"blog">[]>([])
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState<CollectionEntry<"blog">[]>([]);
 
   const fuse = new Fuse(data, {
     keys: ["slug", "data.title", "data.summary", "data.tags"],
     includeMatches: true,
     minMatchCharLength: 2,
     threshold: 0.4,
-  })
+  });
 
-  createEffect(() => {
-    if (query().length < 2) {
-      setResults([])
+  useEffect(() => {
+    if (query.length < 2) {
+      setResults([]);
     } else {
-      setResults(fuse.search(query()).map((result) => result.item))
+      setResults(fuse.search(query).map((result) => result.item));
     }
-  })
+  }, [query, data]);
 
-  const onSearchInput = (e: Event) => {
-    const target = e.target as HTMLInputElement
-    setQuery(target.value)
-  }
+  const onSearchInput = (e: React.FormEvent<HTMLInputElement>) => {
+    setQuery(e.currentTarget.value);
+  };
 
   return (
-    <div class="flex flex-col">
-      <SearchBar onSearchInput={onSearchInput} query={query} setQuery={setQuery} placeholderText="What are you looking for?" />
+    <div className="flex flex-col">
+      <SearchBar
+        onSearchInput={onSearchInput}
+        query={() => query}
+        setQuery={setQuery}
+        placeholderText="¿Qué estás buscando?"
+      />
 
-      {(query().length >= 2 && results().length >= 1) && (
-        <div class="mt-12">
-          <div class="text-sm uppercase mb-2">
-            Found {results().length} results for {`'${query()}'`}
+      {query.length >= 2 && results.length >= 1 && (
+        <div className="mt-12">
+          <div className="text-sm uppercase mb-2">
+            Se encontraron {results.length} resultados para '{query}'
           </div>
-          <ul class="flex flex-col gap-3">
-            {results().map(result => (
-              <li>
+          <ul className="flex flex-col gap-3">
+            {results.map((result) => (
+              <li key={result.slug}>
                 <ArrowCard entry={result} pill={true} />
               </li>
             ))}
@@ -51,5 +55,5 @@ export default function Search({ data }: Props) {
         </div>
       )}
     </div>
-  )
+  );
 }

@@ -1,12 +1,12 @@
 ---
-company: "Google"
-role: "Staff Software Engineer"
-dateStart: "11/27/2022"
-dateEnd: "Now"
+company: "Disruptive Information Technologies"
+role: "Desarrollador Frontend"
+dateStart: "04/01/2025"
+dateEnd: "05/31/2025"
 ---
 
-Sit amet consectetur adipisicing elit. Iure illo neque tempora, voluptatem est quaerat voluptas praesentium ipsa dolorem dignissimos nulla ratione distinctio quae maiores eligendi nostrum? Quibusdam, debitis voluptatum, lorem ipsum dolor.
+Desarrollo de interfaces web como freelancer. Prestación de servicios profesionales enfocados en frontend.
 
-- Aadipisicing elit. Iure illo neque tempora, voluptatem est.
-- dolorem dignissimos nulla ratione.
-- Quibusdam, debitis voluptatum, lorem ipsum dolor.
+- Maquetación de interfaces modernas y responsivas
+- Desarrollo con Typescript, Tailwinds CSS
+- Implementación de componentes reutilizables

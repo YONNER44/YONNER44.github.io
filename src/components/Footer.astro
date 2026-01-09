@@ -1,6 +1,8 @@
 ---
 import { SITE, SOCIALS } from "@consts"
 import Container from "@components/Container.astro"
+import { Image } from "astro:assets"
+import logo from "@assets/carca22.png"
 ---
 
 <footer class="relative bg-white dark:bg-black">
@@ -14,7 +16,7 @@ import Container from "@components/Container.astro"
               <polyline points="12 19 5 12 12 5" class="translate-x-1 group-hover:translate-x-0 transition-all duration-300 ease-in-out" />
             </svg>
             <div class="w-full group-hover:text-black group-hover:dark:text-white transition-colors duration-300 ease-in-out">
-              Back to top
+              Volver arriba
             </div>
           </button>
         </div>
@@ -25,10 +27,10 @@ import Container from "@components/Container.astro"
       <Container size="md">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div class="flex flex-col items-center sm:items-start">
-            <a href="/" class="flex gap-1 w-fit font-semibold text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-              <svg class="size-6 fill-current">
-                <use href="/brand.svg#brand"/>
-              </svg>
+            <a href="/" class="flex gap-3 items-center w-fit font-semibold text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+              <div class="w-14 h-14 rounded-full flex items-center justify-center bg-black dark:bg-transparent overflow-hidden">
+               <Image src={logo} alt="dsx Logo" width={44} height={44} class="w-12 h-12 object-contain p-1" />
+          </div>
               {SITE.TITLE}
             </a>
           </div>
@@ -37,7 +39,7 @@ import Container from "@components/Container.astro"
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300"></span>
               <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
             </span>
-            All systems normal
+            Todos los sistemas normales
           </div>
         </div>
       </Container>
@@ -49,14 +51,14 @@ import Container from "@components/Container.astro"
           <div class="order-2 sm:order-1 flex flex-col items-center justify-center sm:items-start">
             <div class="legal">
               <a href="/legal/terms" class="text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-                Terms
+                Terminos
               </a> |
               <a href="/legal/privacy" class="text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-                Privacy
+                Privacidad
               </a>
             </div>
             <div class="text-sm mt-2">
-              &copy; 2024 | All rights reserved
+              &copy; 2026 | Todos los derechos reservados
             </div>
           </div>
   
