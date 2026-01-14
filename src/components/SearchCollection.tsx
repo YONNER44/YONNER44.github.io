@@ -11,6 +11,8 @@ type Props = {
   data: CollectionEntry<"blog">[] | CollectionEntry<'projects'>[]
 }
 
+const BASE_URL = import.meta.env.BASE_URL;
+
 export default function SearchCollection({ entry_name, data, tags }: Props) {
   const coerced = data.map((entry) => entry as CollectionEntry<'blog'>);
 
@@ -87,7 +89,7 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
                 className="absolute flex justify-center items-center h-full w-10 right-0 top-0 stroke-neutral-400 dark:stroke-neutral-500 hover:stroke-neutral-600 hover:dark:stroke-neutral-300"
               >
                 <svg className="size-5">
-                  <use href={`/ui.svg#x`} />
+                  <use href={`${BASE_URL}ui.svg#x`} />
                 </svg>
               </button>
             )}
@@ -114,11 +116,11 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
                     )}
                   >
                     <use
-                      href={`/ui.svg#square`}
+                      href={`${BASE_URL}ui.svg#square`}
                       className={(!filter.has(tag) ? "block" : "hidden")}
                     />
                     <use
-                      href={`/ui.svg#square-check`}
+                      href={`${BASE_URL}ui.svg#square-check`}
                       className={(filter.has(tag) ? "block" : "hidden")}
                     />
                   </svg>
@@ -146,8 +148,8 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
               <svg
                 className="size-5 left-2 top-[0.45rem]"
               >
-                <use href={`/ui.svg#sort-descending`} className={descending ? "block" : "hidden"}></use>
-                <use href={`/ui.svg#sort-ascending`} className={descending ? "hidden" : "block"}></use>
+                <use href={`${BASE_URL}ui.svg#sort-descending`} className={descending ? "block" : "hidden"}></use>
+                <use href={`${BASE_URL}ui.svg#sort-ascending`} className={descending ? "hidden" : "block"}></use>
               </svg>
             </button>
           </div>
