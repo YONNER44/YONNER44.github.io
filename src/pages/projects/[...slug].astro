@@ -1,0 +1,54 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content"
+import PageLayout from "@layouts/PageLayout.astro"
+import TopLayout from "@layouts/TopLayout.astro"
+import BottomLayout from "@layouts/BottomLayout.astro"
+import ArticleTopLayout from "@layouts/ArticleTopLayout.astro"
+import ArticleBottomLayout from "@layouts/ArticleBottomLayout.astro"
+
+// Create the static projects pages
+export async function getStaticPaths() {
+	const projects = await getCollection("projects")
+	return projects.map((project) => ({
+		params: { slug: project.slug },
+		props: project,
+	}))
+}
+
+// Get the requested project
+type Props = CollectionEntry<"projects">
+const project = Astro.props
+
+// Redirigir a las vistas personalizadas
+const projectRoutes: Record<string, string> = {
+	"project-1": "/projects/intenrship",
+	"project-2": "/projects/dsx",
+	"project-3": "/projects/div-manager",
+}
+
+const hasCustomRoute = projectRoutes[project.slug]
+
+const { title, summary } = project.data
+const redirectUrl = hasCustomRoute ? projectRoutes[project.slug] : null
+---
+
+<PageLayout title={title} description={summary}>
+  {hasCustomRoute && (
+    <>
+      <meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
+      <script set:html={`window.location.href="${redirectUrl}"`}></script>
+    </>
+  )}
+  {!hasCustomRoute && (
+  <TopLayout>
+    <div class="animate">
+      <ArticleTopLayout entry={project} />
+    </div>
+  </TopLayout>
+  <BottomLayout>
+    <div class="animate">
+      <ArticleBottomLayout entry={project} />
+    </div>
+  </BottomLayout>
+  )}
+</PageLayout>
