@@ -26,14 +26,20 @@ const projectRoutes: Record<string, string> = {
 	"project-3": "/projects/div-manager",
 }
 
-if (projectRoutes[project.slug]) {
-	return Astro.redirect(projectRoutes[project.slug])
-}
+const hasCustomRoute = projectRoutes[project.slug]
 
 const { title, summary } = project.data
+const redirectUrl = hasCustomRoute ? projectRoutes[project.slug] : null
 ---
 
 <PageLayout title={title} description={summary}>
+  {hasCustomRoute && (
+    <>
+      <meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
+      <script set:html={`window.location.href="${redirectUrl}"`}></script>
+    </>
+  )}
+  {!hasCustomRoute && (
   <TopLayout>
     <div class="animate">
       <ArticleTopLayout entry={project} />
@@ -44,4 +50,5 @@ const { title, summary } = project.data
       <ArticleBottomLayout entry={project} />
     </div>
   </BottomLayout>
+  )}
 </PageLayout>

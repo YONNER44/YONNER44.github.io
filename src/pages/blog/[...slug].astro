@@ -20,13 +20,18 @@ type Props = CollectionEntry<"blog">
 const post = Astro.props
 const { title, summary } = post.data
 
-// Si es el CV, redirigir a /cv
-if (post.slug === "curriculum-vitae") {
-	return Astro.redirect("/cv")
-}
+// Si es el CV, redirigir a /cv con una página temporal
+const isCVRedirect = post.slug === "curriculum-vitae"
 ---
 
 <PageLayout title={title} description={summary}>
+  {isCVRedirect && (
+    <>
+      <meta http-equiv="refresh" content="0;url=/cv" />
+      <script set:html="window.location.href='/cv'"></script>
+    </>
+  )}
+  {!isCVRedirect && (
   <TopLayout>
     <div class="animate">
       <ArticleTopLayout entry={post}/>
@@ -37,4 +42,5 @@ if (post.slug === "curriculum-vitae") {
       <ArticleBottomLayout entry={post} />
     </div>
   </BottomLayout>
+  )}
 </PageLayout>
