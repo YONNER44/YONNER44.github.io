@@ -104,13 +104,15 @@ git switch staging && git switch main && git reset --hard staging && git push --
 
 1. **Siempre desarrolla en `dev`** - Nunca edites directamente `staging` o `main`
 
-2. **El archivo `.nojekyll`** en `public/` es necesario para que GitHub Pages sirva la carpeta `_astro`
+2. **`.gitignore` en staging/main** - Ambas ramas tienen un `.gitignore` que ignora `src/`, `node_modules/` y `.astro/`. Esto evita conflictos al cambiar de rama, ya que estas carpetas solo deben existir en `dev`
 
-3. **GitHub Pages tarda 1-2 minutos** en actualizar después del push
+3. **El archivo `.nojekyll`** en `public/` es necesario para que GitHub Pages sirva la carpeta `_astro`
 
-4. **Limpia caché del navegador** con `Ctrl + Shift + R` después de desplegar
+4. **GitHub Pages tarda 1-2 minutos** en actualizar después del push
 
-5. **La configuración actual:**
+5. **Limpia caché del navegador** con `Ctrl + Shift + R` después de desplegar
+
+6. **La configuración actual:**
    - `site: "https://yonner44.github.io"`
    - **NO usar** `base:` porque es un sitio de usuario, no de proyecto
 
