@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content"
+import { getCollection, type CollectionEntry } from "astro:content"
 import PageLayout from "@layouts/PageLayout.astro"
 import ArrowCard from "@components/ArrowCard"
 import StackCard from "@components/StackCard.astro"
@@ -8,13 +8,13 @@ import TwinklingStars from "@components/TwinklingStars.astro"
 import MeteorShower from "@components/MeteorShower.astro"
 
 const posts = (await getCollection("blog"))
-  .filter(post => !post.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .filter((post: CollectionEntry<"blog">) => !post.data.draft)
+  .sort((a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0,3)
 
 const projects = (await getCollection("projects"))
-  .filter(project => !project.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .filter((project: CollectionEntry<"projects">) => !project.data.draft)
+  .sort((a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0,3)
 
 const stack = [
@@ -130,7 +130,7 @@ const stack = [
             </a>
           </div>
           <ul class="space-y-4">
-            {posts.map((post) => (
+            {posts.map((post: CollectionEntry<"blog">) => (
               <li>
                 <ArrowCard entry={post} />
               </li>
@@ -179,7 +179,7 @@ const stack = [
             </a>
           </div>
           <ul class="space-y-4">
-            {projects.map((project) => (
+            {projects.map((project: CollectionEntry<"projects">) => (
               <li>
                 <ArrowCard entry={project} />
               </li>
