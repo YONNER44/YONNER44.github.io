@@ -31,7 +31,7 @@ Plataforma deportiva para gestión de equipos de fútbol con dashboard en tiempo
 
 **Stack:** React, TypeScript, Tailwind CSS, Node.js, MongoDB, Jira
 
-### INTENRSHIP
+### INTERNSHIP
 Sistema integral para gestión de alojamiento, alquiler de vehículos y pasantías empresariales.
 
 **Stack:** React, TypeScript, Tailwind CSS, Node.js, Express.js, Figma
