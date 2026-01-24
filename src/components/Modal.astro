@@ -1,0 +1,127 @@
+---
+import { HiOutlineCog } from "react-icons/hi";
+// filepath: src/components/Modal.astro
+const { title = "Configuración" } = Astro.props;
+---
+
+<div
+  id="config-modal"
+  class="hidden absolute top-full right-0 mt-2 z-50 opacity-0 scale-95 transition-all duration-300 ease-out"
+>
+  <div
+    class="bg-black dark:bg-white rounded-3xl shadow-2xl p-6 sm:p-8 w-80 sm:w-96 relative"
+  >
+    <button
+      type="button"
+      class="absolute top-3 right-3 p-2 rounded-full  flex items-center justify-center text-white dark:text-black  transition-transform duration-300 ease-in-out
+         hover:rotate-90 hover:scale-110"
+      aria-label="Cerrar"
+    >
+      <span aria-hidden="true" class="text-2xl leading-none">&times;</span>
+    </button>
+    <h2 class="flex items-center gap-2 text-2xl font-bold mb-4 text-white dark:text-black">
+     <HiOutlineCog className="w-7 h-7 text-white dark:text-black" />
+     {title}
+    </h2>
+    <form id="clave-form" class="flex flex-col gap-4 items-stretch mt-2">
+      <button
+        id="solicitar-clave"
+        type="button"
+        class="w-full py-3 px-4 text-left font-bold rounded-2xl border-1 shadow-lg text-black dark:text-white bg-white dark:bg-black transition duration-300 transform hover:scale-105 hover:shadow-xl"
+        >Solicitar clave.</button
+      >
+      <input
+        id="clave"
+        name="clave"
+        type="text"
+        required
+        placeholder="Ingresa la clave recibida"
+        class="w-full py-3 px-4 font-bold placeholder:text-gray-400 rounded-2xl border-1 shadow-lg text-black dark:text-white bg-white dark:bg-black transition duration-300 transform hover:scale-105 hover:shadow-xl"
+        disabled
+      />
+      <button
+        id="validar-clave"
+        type="submit"
+        class="w-full py-3 px-4 text-left font-bold rounded-2xl border-1 shadow-lg text-black dark:text-white bg-white dark:bg-black transition duration-300 transform hover:scale-105 hover:shadow-xl"
+        disabled>Validar clave.</button
+      >
+    </form>
+    <slot />
+  </div>
+</div>
+<script>
+  if (typeof window !== "undefined") {
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("clave-form");
+      const solicitarBtn = document.getElementById("solicitar-clave");
+      const validarBtn = document.getElementById("validar-clave");
+      const claveInput = document.getElementById("clave");
+
+      // El correo se obtiene del sistema automáticamente en el backend
+      // No se muestra ni se pide aquí
+
+      // URLS de tus endpoints (ajusta según tu backend)
+      const API_URL = "/api/solicitar-clave";
+      const VALIDAR_URL = "/api/validar-clave";
+
+      if (solicitarBtn && claveInput && validarBtn) {
+        solicitarBtn.addEventListener("click", async () => {
+          solicitarBtn.disabled = true;
+          solicitarBtn.textContent = "Enviando...";
+          try {
+            // Llama a tu backend para solicitar la clave
+            const res = await fetch(API_URL, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email }),
+            });
+            if (res.ok) {
+              alert("Clave enviada a tu correo.");
+              claveInput.disabled = false;
+              validarBtn.disabled = false;
+            } else {
+              alert("Error al solicitar la clave. Intenta de nuevo.");
+              solicitarBtn.disabled = false;
+              solicitarBtn.textContent = "Solicitar clave";
+            }
+          } catch (err) {
+            alert("Error de red. Intenta de nuevo.");
+            solicitarBtn.disabled = false;
+            solicitarBtn.textContent = "Solicitar clave";
+          }
+        });
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const clave = claveInput.value.trim();
+          if (!clave) {
+            alert("Ingresa la clave recibida por correo.");
+            return;
+          }
+          validarBtn.disabled = true;
+          validarBtn.textContent = "Validando...";
+          try {
+            // Llama a tu backend para validar la clave
+            const res = await fetch(VALIDAR_URL, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, clave }),
+            });
+            if (res.ok) {
+              // Redirige a la vista de instalación
+              window.location.href = "/instalacion";
+            } else {
+              alert("Clave incorrecta o expirada.");
+              validarBtn.disabled = false;
+              validarBtn.textContent = "Validar clave";
+            }
+          } catch (err) {
+            alert("Error de red. Intenta de nuevo.");
+            validarBtn.disabled = false;
+            validarBtn.textContent = "Validar clave";
+          }
+        });
+      }
+    });
+  }
+</script>

@@ -3,6 +3,8 @@ import PageLayout from "@layouts/PageLayout.astro"
 import Container from "@components/Container.astro"
 import { Image } from "astro:assets"
 import logoInterns from "@assets/logointerns.png"
+import { HiOutlineCog } from "react-icons/hi";
+import Modal from "@components/Modal.astro";
 
 // Importa tus imágenes
 import img1 from "@assets/dsx/img1.png";
@@ -28,6 +30,13 @@ const images = [img1, img2, img3, img4];
             </svg>
             Volver
           </a>
+          <!-- Ícono de configuración -->
+        <div class="absolute right-0 top-0">
+          <button id="config-btn" class="p-2 bg-black dark:bg-white rounded-full transition relative z-10">
+            <HiOutlineCog className="h-6 w-6 text-white dark:text-black" />
+          </button>
+          <Modal title="Configuración" />
+        </div>
           <div class="text-center">
             <!-- Logo del Proyecto y Botón -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 mb-6">
@@ -206,3 +215,49 @@ const images = [img1, img2, img3, img4];
     </div>
   </Container>
 </PageLayout>
+<script>
+  declare global {
+  interface Window {
+    closeConfigModal: () => void;
+  }
+}
+  // filepath: src/pages/projects/internship.astro
+  if (typeof window !== "undefined") {
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("config-btn");
+      const modal = document.getElementById("config-modal");
+      const closeBtn = modal?.querySelector("button[aria-label='Cerrar']");
+
+      if (!btn || !modal || !closeBtn) return;
+
+      const openModal = () => {
+        modal.classList.remove("hidden");
+        // Forzar reflow para que la transición funcione
+        modal.offsetHeight;
+        modal.classList.remove("opacity-0", "scale-95");
+        modal.classList.add("opacity-100", "scale-100");
+      };
+
+      const closeModal = () => {
+        modal.classList.remove("opacity-100", "scale-100");
+        modal.classList.add("opacity-0", "scale-95");
+        // Esperar a que termine la animación antes de ocultar
+        setTimeout(() => {
+          modal.classList.add("hidden");
+        }, 300);
+      };
+
+      window.closeConfigModal = closeModal;
+      btn.addEventListener("click", openModal);
+      closeBtn.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+          closeModal();
+        }
+      });
+    });
+  }
+</script>
