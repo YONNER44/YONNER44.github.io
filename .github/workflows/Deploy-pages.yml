@@ -1,55 +1,86 @@
+# Nombre visible del workflow en la pestaña Actions
 name: Deploy (GitHub Pages)
 
+# Cuándo se ejecuta este workflow
 on:
+  # Se dispara automáticamente cuando haces git push a la rama main
   push:
     branches: [main]
+
+  # Permite ejecutarlo manualmente desde GitHub → Actions → Run workflow
   workflow_dispatch:
 
+# Permisos mínimos que el workflow necesita
+# - contents: read  -> para leer/checkout del repo
+# - pages: write    -> para publicar en GitHub Pages
+# - id-token: write -> para autenticación OIDC que usa deploy-pages (recomendado)
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Evita que se acumulen despliegues en paralelo:
+# si empujas varios commits rápido, cancela el anterior y deja el último.
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
+  # JOB 1: build
+  # Objetivo: construir el sitio (generar dist/) y subirlo como "artifact" para Pages.
   build:
     runs-on: ubuntu-latest
+
     steps:
+      # 1) Descarga tu repo en el runner (máquina temporal de GitHub)
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 2) Instala Node.js (version 20) y activa cache de npm
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
+      # 3) Instala dependencias en modo “CI” (usa package-lock.json)
+      #    - Más reproducible que npm install
       - name: Install deps
         run: npm ci
 
+      # 4) Corre tu build
+      #    En tu package.json: "build" = "astro check && astro build"
+      #    Esto genera el sitio estático dentro de la carpeta dist/
       - name: Build
         env:
           ASTRO_TELEMETRY_DISABLED: "1"
         run: npm run build
 
+      # 5) Prepara configuración para GitHub Pages en el runner
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      # 6) Sube el contenido de dist/ como un artifact (paquete) para GitHub Pages
+      #    Importante: aquí todavía NO se publica en la web; solo se “empaqueta”.
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
+  # JOB 2: deploy
+  # Objetivo: tomar el artifact generado por build y publicarlo en GitHub Pages.
   deploy:
+    # needs: build significa: este job SOLO corre si build terminó OK.
     needs: build
     runs-on: ubuntu-latest
+
+    # Environment "github-pages" permite que GitHub muestre la URL publicada
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
+      # Publica el artifact en GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
