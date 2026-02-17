@@ -64,3 +64,14 @@ import { HiOutlineCodeBracketSquare } from "react-icons/hi2";
     </div>
   </Container>
 </PageLayout>
+
+<script is:inline>
+  if (typeof window !== "undefined") {
+    const hasLocalToken = !!localStorage.getItem("authToken");
+    const hasCookieToken = document.cookie.includes("authToken=");
+
+    if (!hasLocalToken && !hasCookieToken) {
+      window.location.href = "/";
+    }
+  }
+</script>

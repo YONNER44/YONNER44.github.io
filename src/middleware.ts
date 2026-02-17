@@ -1,19 +1,8 @@
 // src/middleware.ts
 import { defineMiddleware } from "astro:middleware";
 
-export const onRequest = defineMiddleware(async (context, next) => {
-  const { pathname } = context.url;
-  
-  // Rutas protegidas
-  const protectedRoutes = ['/projectsConfig'];
-  
-  if (protectedRoutes.some(route => pathname.startsWith(route))) {
-    const token = context.cookies.get('authToken')?.value;
-    
-    if (!token) {
-      return context.redirect('/');
-    }
-  }
-  
+export const onRequest = defineMiddleware(async (_, next) => {
+  // En despliegue estatico (GitHub Pages) no existe proteccion real por request.
+  // La validacion de acceso se realiza en cliente en las vistas protegidas.
   return next();
 });
