@@ -36,7 +36,7 @@ const { title = "Configuración" } = Astro.props;
         type="text"
         required
         placeholder="Ingresa la clave recibida"
-        class="w-full py-3 px-4 font-bold placeholder:text-gray-400 rounded-2xl focus:outline-noneaaaa border-1 shadow-lg text-black dark:text-white bg-white dark:bg-black transition duration-300 transform hover:scale-105 hover:shadow-xl"
+        class="w-full py-3 px-4 font-bold placeholder:text-gray-500 rounded-2xl focus:outline-noneaaaa border-1 shadow-lg text-black dark:text-white bg-white dark:bg-black transition duration-300 transform hover:scale-105 hover:shadow-xl"
         disabled
       />
       <button
@@ -138,10 +138,10 @@ import { apiService } from "../services/api.service";
 
             if (response.success && response.valid && response.token) {
   mostrarRespuesta(response.message);
-  // Guardar el token
+  // Guardar el token en cliente
   localStorage.setItem('authToken', response.token);
-  // También guardar en cookie para que el middleware lo pueda leer
-  document.cookie = `authToken=${response.token}; path=/; max-age=86400`;
+  // Guardar cookie para que middleware SSR pueda validar sesion
+  document.cookie = `authToken=${encodeURIComponent(response.token)}; Path=/; Max-Age=86400; SameSite=Lax`;
   setTimeout(() => {
     window.location.href = "/projectsConfig/internshipConfig";
   }, 1000);

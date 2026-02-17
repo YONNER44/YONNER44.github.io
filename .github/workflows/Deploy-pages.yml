@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Nombre visible del workflow en la pestaña Actions
 name: Deploy (GitHub Pages)
 
@@ -37,12 +38,37 @@ jobs:
         uses: actions/checkout@v4
 
       # 2) Instala Node.js (version 20) y activa cache de npm
+=======
+name: CI (Build)
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+>>>>>>> origin/dev
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
+<<<<<<< HEAD
       # 3) Instala dependencias en modo “CI” (usa package-lock.json)
       #    - Más reproducible que npm install
       - name: Install deps
@@ -84,3 +110,12 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+=======
+      - name: Install deps
+        run: npm ci
+
+      - name: Build
+        env:
+          ASTRO_TELEMETRY_DISABLED: "1"
+        run: npm run build
+>>>>>>> origin/dev

@@ -1,13 +1,66 @@
 ---
-import PageLayout from "@layouts/PageLayout.astro"
-import Container from "@components/Container.astro"
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import CodeBlock from "@components/CodeBlock";
+import { internshipConfigData } from "@data/internshipConfig";
+import { HiOutlineCodeBracketSquare } from "react-icons/hi2";
 ---
-<PageLayout title="INTENRSHIP" description="vista sobre toda la instalacion de sistema ok.">
-    <Container size="2xl">
-    <div class="animate max-w-5xl mx-auto py-8 mt-16">
-      
-      <!-- Card Principal del Proyecto -->
-      <div class="bg-white dark:bg-[rgb(var(--gray-999))] rounded-3xl p-4 sm:p-8 md:p-12 shadow-2xl border dark:border-[rgb(var(--gray-800))]"></div>
+
+<PageLayout>
+  <Container size="2xl">
+    <div class="animate mx-auto mt-16 max-w-5xl py-8">
+      <div class="rounded-3xl p-4 shadow-2xl sm:p-8 md:p-12">
+        <h2 class="mb-6 text-xl font-semibold">{internshipConfigData.title}</h2>
+
+        <div class="space-y-8">
+          {
+            internshipConfigData.sections.map((section) => (
+              <section>
+                <h3
+                  class={
+                    section.id === "run-project-5"
+                      ? "mb-4 flex items-center gap-3 text-xl font-bold text-black dark:text-white"
+                      : "mb-4 text-lg font-semibold"
+                  }
+                >
+                  {section.id === "run-project-5" && (
+                    <HiOutlineCodeBracketSquare className="h-6 w-6 text-black dark:text-cyan-400" />
+                  )}
+
+                  <span
+                    class={
+                      section.id === "run-project-5"
+                        ? "text-black dark:bg-gradient-to-r dark:from-cyan-400 dark:via-blue-500 dark:to-indigo-500 dark:bg-clip-text dark:text-transparent"
+                        : ""
+                    }
+                  >
+                    {section.title}
+                  </span>
+                </h3>
+
+                <ol class="mb-6 list-decimal space-y-2 pl-5">
+                  {section.steps.map((step) => (
+                    <li>{step.text}</li>
+                  ))}
+                </ol>
+
+                <div class="space-y-4">
+                  {section.snippets.map((snippet, index) => (
+                    <div class={index > 0 ? "mt-6" : ""}>
+                      <CodeBlock
+                        client:load
+                        title={snippet.title}
+                        language={snippet.language}
+                        code={snippet.code}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))
+          }
+        </div>
+      </div>
     </div>
-    </Container>
-    </PageLayout>
+  </Container>
+</PageLayout>
