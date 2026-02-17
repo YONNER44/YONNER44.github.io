@@ -36,6 +36,26 @@ const BASE_URL = import.meta.env.BASE_URL
     </div>
 
     <div class="buttons absolute right-0 top-1/2 -translate-y-1/2 flex gap-1">
+      <button
+        id="header-logout-button"
+        aria-label="Cerrar sesión"
+        title="Cerrar sesión"
+        class={cn(
+          "flex order-last",
+          "size-9 rounded-full p-2 items-center justify-center",
+          "bg-transparent hover:bg-black/5 dark:hover:bg-white/20",
+          "stroke-current hover:stroke-black hover:dark:stroke-white",
+          "border border-black/10 dark:border-white/25",
+          "transition-colors duration-300 ease-in-out"
+        )}
+      >
+        <svg class="size-full" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          <path d="M16 17l5-5-5-5" />
+          <path d="M21 12H9" />
+        </svg>
+      </button>
+
       <a href="/search" aria-label={`Search blog posts and projects on ${SITE.TITLE}`} class={cn("hidden md:flex", "size-9 rounded-full p-2 items-center justify-center", "bg-transparent hover:bg-black/5 dark:hover:bg-white/20", "stroke-current hover:stroke-black hover:dark:stroke-white", "border border-black/10 dark:border-white/25", "transition-colors duration-300 ease-in-out", pathname === "/search" || "/" + subpath?.[0] === "/search" ? "pointer-events-none bg-black dark:bg-white text-white dark:text-black" : "")}>
         <svg class="size-full">
           <use href={`${BASE_URL}ui.svg#search`}></use>
@@ -89,6 +109,30 @@ const BASE_URL = import.meta.env.BASE_URL
 </style>
 
 <script is:inline>
+  function hasSessionToken() {
+    const hasLocalToken = typeof localStorage !== "undefined" && !!localStorage.getItem("authToken")
+    const hasCookieToken = document.cookie.includes("authToken=")
+    return hasLocalToken || hasCookieToken
+  }
+
+  function updateLogoutButtonVisibility() {
+    const logoutButton = document.getElementById("header-logout-button")
+    if (!logoutButton) return
+
+    if (hasSessionToken()) {
+      logoutButton.classList.remove("hidden")
+    } else {
+      logoutButton.classList.add("hidden")
+    }
+  }
+
+  function handleLogout() {
+    localStorage.removeItem("authToken")
+    document.cookie = "authToken=; Path=/; Max-Age=0; SameSite=Lax"
+    updateLogoutButtonVisibility()
+    window.location.href = "/"
+  }
+
   function toggleDrawer() {
     const drawer = document.getElementById("drawer")
     const drawerButton = document.getElementById("header-drawer-button")
@@ -101,6 +145,16 @@ const BASE_URL = import.meta.env.BASE_URL
     drawerButton?.addEventListener("click", toggleDrawer)
   }
 
+  function initializeLogoutButton() {
+    const logoutButton = document.getElementById("header-logout-button")
+    if (!logoutButton) return
+    logoutButton.onclick = handleLogout
+    updateLogoutButtonVisibility()
+  }
+
   document.addEventListener("astro:after-swap", initializeDrawerButton)
+  document.addEventListener("astro:after-swap", initializeLogoutButton)
+  window.addEventListener("storage", updateLogoutButtonVisibility)
   initializeDrawerButton()
+  initializeLogoutButton()
 </script>

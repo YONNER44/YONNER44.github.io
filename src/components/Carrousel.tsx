@@ -10,8 +10,10 @@ export default function Carrousel(props: Props) {
   const images = props.images;
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  if (!images?.length) return null;
+
   useEffect(() => {
-    intervalRef.current = setInterval(() => nextImage(), 5000);
+    intervalRef.current = setInterval(() => nextImage(), 6000);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
@@ -26,34 +28,39 @@ export default function Carrousel(props: Props) {
         setCurrent((prev) => (prev + 1) % images.length);
       }
       setFade(true);
-    }, 600);
+    }, 450);
   }
 
   function goTo(idx: number) {
     if (intervalRef.current) clearInterval(intervalRef.current);
     nextImage(idx);
-    intervalRef.current = setInterval(() => nextImage(), 5000);
+    intervalRef.current = setInterval(() => nextImage(), 6000);
   }
 
   return (
-    <div className="relative flex items-center justify-center h-96">
-    <div className="w-full flex items-center justify-center py-8">
-      <img
-        src={images[current].src}
-        alt={`Imagen ${current + 1} DSX`}
-        className={`object-contain w-full max-h-[70%] rounded-xl border transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}
-      />
-    </div>
-    <div className="flex justify-center gap-2 mt-4 absolute bottom-4 left-1/2 -translate-x-1/2">
-      {images.map((_, idx: number) => (
-        <button
-          type="button"
-          onClick={() => goTo(idx)}
-          aria-label={`Ver imagen ${idx + 1}`}
-          className={`w-3 h-3 rounded-full border border-black transition-colors duration-300 focus:outline-none ${current === idx ? "bg-white" : "bg-black"}`}
+    <div className="relative h-[28rem] w-full overflow-hidden rounded-2xl border border-black/10 bg-white/40 shadow-xl backdrop-blur-sm dark:border-white/10 dark:bg-black/20">
+      <div className="relative flex h-full items-center justify-center overflow-hidden rounded-2xl">
+        <img
+          src={images[current].src}
+          alt={`Imagen ${current + 1}`}
+          className={`h-full w-full object-contain p-4 transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}
         />
-      ))}
+
+      </div>
+
+      {images.length > 1 && (
+        <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-1.5 dark:border-white/15 dark:bg-black/60">
+          {images.map((_, idx: number) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => goTo(idx)}
+              aria-label={`Ver imagen ${idx + 1}`}
+              className={`h-2.5 w-2.5 rounded-full border border-black/25 transition-all duration-300 dark:border-white/30 ${current === idx ? "scale-110 bg-black dark:bg-white" : "bg-white/60 dark:bg-black/60"}`}
+            />
+          ))}
+        </div>
+      )}
     </div>
-  </div>
   );
 }
