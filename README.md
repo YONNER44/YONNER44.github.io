@@ -1,113 +1,144 @@
-# 🌐 Portafolio Personal - Yonner Vargas
+# Portafolio Personal - Yonner Vargas
 
-Portafolio web moderno y minimalista construido con Astro, Tailwind CSS, TypeScript y SolidJS.
+Portafolio web construido con Astro y Tailwind CSS para presentar proyectos, experiencia y hoja de vida.
 
-## 🎨 Características
+## Caracteristicas
 
-- ✅ Diseño responsive optimizado para móvil, tablet y desktop
-- ✅ Modo claro/oscuro con transiciones suaves
-- ✅ Animaciones y efectos visuales personalizados
-- ✅ Carrusel de imágenes interactivo con auto-slide
-- ✅ SEO optimizado
-- ✅ RSS Feed automático
-- ✅ Sitemap generado automáticamente
-- ✅ Búsqueda de contenido (proyectos y blog)
-- ✅ Sistema de navegación móvil (drawer)
-- ✅ Componentes tipados con TypeScript
+- Diseno responsive (mobile, tablet, desktop)
+- Modo claro/oscuro
+- Galeria de proyectos con carrusel
+- Busqueda de contenido
+- Blog y CV en pagina dedicada
+- Boton de descarga de CV (`/documents/CV-YONNER-VARGAS-BERNATE.pdf`)
+- SEO, RSS y sitemap
 
-## 🚀 Stack Tecnológico
+## Stack
 
-- **Framework:** Astro 5.x
-- **Estilos:** Tailwind CSS
-- **Interactividad:** SolidJS (componentes reactivos)
-- **Lenguaje:** TypeScript
-- **Fuentes:** Atkinson (custom web fonts)
-- **Iconos:** SVG sprites personalizados
+- Astro 4
+- TypeScript
+- Tailwind CSS
+- React (componentes interactivos)
+- React Icons
+- React Syntax Highlighter
 
-## 📂 Proyectos Destacados
+## Documentacion Frontend
 
-### DS24/7
-Plataforma deportiva para gestión de equipos de fútbol con dashboard en tiempo real, calendario de partidos y estadísticas.
+### Arquitectura general
 
-**Stack:** React, TypeScript, Tailwind CSS, Node.js, MongoDB, Jira
+- Framework principal: `Astro` (`src/pages` para rutas basadas en archivos).
+- UI estatica con `.astro`, interactividad puntual en componentes `.tsx` (React).
+- Estilos globales en `src/styles/global.css`.
+- Tokens y extensiones de Tailwind en `tailwind.config.mjs`.
+- Contenido editorial (blog, projects, legal, work) en `src/content/*` usando `astro:content`.
 
-### INTERNSHIP
-Sistema integral para gestión de alojamiento, alquiler de vehículos y pasantías empresariales.
+### Estructura de carpetas (front)
 
-**Stack:** React, TypeScript, Tailwind CSS, Node.js, Express.js, Figma
+- `src/pages/`: paginas y rutas del sitio.
+- `src/layouts/`: layouts reutilizables para estructura de pagina.
+- `src/components/`: componentes visuales (`.astro` y `.tsx`).
+- `src/content/`: contenido markdown/MDX versionado en repo.
+- `src/assets/`: imagenes procesadas por Astro.
+- `public/`: archivos estaticos sin procesamiento (fonts, js, documentos, favicon).
 
-### Div-manager
-Sistema de gestión de tareas y proyectos para equipos de desarrollo con control de equipos, asignación de tareas y seguimiento de progreso.
+### Rutas principales
 
-**Stack:** React, TypeScript, Tailwind CSS, Node.js, PostgreSQL
+- `src/pages/index.astro`: home.
+- `src/pages/projects/index.astro`: listado de proyectos.
+- `src/pages/projects/[...slug].astro`: detalle dinamico de proyectos desde contenido.
+- `src/pages/blog/index.astro`: listado de blog.
+- `src/pages/blog/[...slug].astro`: detalle dinamico de posts.
+- `src/pages/cv.astro`: hoja de vida.
+- `src/pages/work/index.astro`: experiencia laboral.
+- `src/pages/legal/[...slug].astro`: paginas legales.
 
-## 📄 Contenido
+### Componentes clave
 
-El portafolio incluye:
-- **Página principal** con presentación y proyectos destacados
-- **Sección de proyectos** con galerías de imágenes interactivas
-- **Blog personal** con artículos técnicos
-- **CV descargable** en formato web
-- **Sección de contacto** con enlaces a redes sociales
+- `src/components/Header.astro` y `src/components/Footer.astro`: navegacion y pie global.
+- `src/components/Modal.astro`: modal reutilizable.
+- `src/components/Carrousel.tsx`: galeria de imagenes interactiva.
+- `src/components/Search.tsx`, `src/components/SearchBar.tsx`, `src/components/SearchCollection.tsx`: busqueda de contenido.
+- `src/components/CodeBlock.tsx`: bloque de codigo con boton de copiado.
 
-## 💻 Commands
+### Estilos y theming
 
-All commands are run from the root of the project, from a terminal:
+- Tailwind se carga con `@astrojs/tailwind` y `applyBaseStyles: false` en `astro.config.mjs`.
+- Fuente principal `Atkinson` definida via `@font-face` en `src/styles/global.css`.
+- Modo dark por clase (`darkMode: ["class"]`) definido en `tailwind.config.mjs`.
+- Scripts utilitarios en `public/js/` para efectos visuales y comportamiento de UI.
 
-Replace npm with your package manager of choice. `npm`, `pnpm`, `yarn`, `bun`, etc
+### Contenido dinamico
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run dev:network`     | Starts dev server on local network               |
-| `npm run sync`            | Generates TypeScript types for all Astro modules.|
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run preview:network` | Starts preview server on local network           |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-| `npm run lint`            | Run ESLint                                       |
-| `npm run lint:fix`        | Auto-fix ESLint issues                           |
+- Esquemas de contenido en `src/content/config.ts`.
+- Colecciones activas:
+  - `blog`
+  - `projects`
+  - `work`
+  - `legal`
+- Para crear nuevas entradas, agregar un `index.md` con frontmatter valido dentro de la coleccion correspondiente.
 
-## � Comandos
+### Como agregar una nueva pagina frontend
 
-Todos los comandos se ejecutan desde la raíz del proyecto:
+1. Crear el archivo de ruta en `src/pages/` (por ejemplo `src/pages/contact.astro`).
+2. Reutilizar un layout de `src/layouts/` para mantener consistencia.
+3. Extraer UI repetida a `src/components/` si aplica.
+4. Agregar enlaces en `Header.astro` o secciones de navegacion si es necesario.
+5. Ejecutar `npm run build` para validar tipos y build.
 
-| Comando                   | Acción                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Instalar dependencias                            |
-| `npm run dev`             | Iniciar servidor de desarrollo en `localhost:4321` |
-| `npm run dev:network`     | Iniciar servidor en red local                    |
-| `npm run sync`            | Generar tipos TypeScript para módulos Astro     |
-| `npm run build`           | Construir sitio para producción en `./dist/`     |
-| `npm run preview`         | Vista previa del build local                     |
-| `npm run preview:network` | Vista previa en red local                        |
-| `npm run astro ...`       | Ejecutar comandos CLI de Astro                   |
-| `npm run lint`            | Ejecutar ESLint                                  |
-| `npm run lint:fix`        | Auto-corregir problemas de ESLint                |
+### Como agregar un nuevo componente interactivo
 
-## 🎯 Componentes Personalizados
+1. Crear componente `.tsx` en `src/components/`.
+2. Importarlo desde una pagina o componente `.astro`.
+3. Usar directivas de hidratacion de Astro cuando aplique (`client:load`, `client:visible`, etc.).
+4. Mantener estilos con utilidades Tailwind y reglas globales minimas.
 
-- **Carrousel.tsx** - Carrusel de imágenes con auto-slide y navegación por puntos
-- **SearchBar.tsx** - Barra de búsqueda con filtrado en tiempo real
-- **Drawer.astro** - Menú de navegación móvil responsivo
-- **StackCard.astro** - Tarjetas para mostrar tecnologías
+## Proyectos mostrados
 
-## 📱 Optimización Móvil
+- DS24/7
+- Internship
+- Div-manager
 
-El portafolio está completamente optimizado para dispositivos móviles con:
-- Navegación adaptativa (drawer en móvil, navbar en desktop)
-- Tipografía escalable y responsive
-- Imágenes optimizadas
-- Padding y márgenes adaptativos
-- Touch-friendly UI
+## Estructura relevante
 
-## 🏛️ Licencia
+- `src/pages/index.astro`: home
+- `src/pages/projects/*`: paginas de proyectos
+- `src/pages/cv.astro`: hoja de vida
+- `src/components/Carrousel.tsx`: galeria de imagenes
+- `src/components/CodeBlock.tsx`: bloques de codigo con copiar
+- `src/data/internshipConfig.ts`: contenido de guia de instalacion
+- `public/documents/`: documentos descargables (CV en PDF)
+
+## Comandos
+
+| Comando | Descripcion |
+| :-- | :-- |
+| `npm install` | Instala dependencias |
+| `npm run dev` | Levanta entorno local en `localhost:4321` |
+| `npm run dev:network` | Levanta entorno local en red |
+| `npm run build` | Ejecuta `astro check` y build de produccion |
+| `npm run preview` | Previsualiza build local |
+| `npm run lint` | Ejecuta ESLint |
+| `npm run lint:fix` | Corrige problemas de lint |
+
+## Deploy (GitHub Pages)
+
+Este proyecto despliega con GitHub Actions usando:
+- `.github/workflows/Deploy-pages.yml`
+
+Configuracion necesaria en GitHub:
+1. `Settings -> Pages`
+2. `Source: GitHub Actions`
+
+Nota importante:
+- No usar `Deploy from a branch` para este flujo.
+- El deploy de produccion se hace desde la rama `main`.
+
+## Actualizacion de CV PDF
+
+1. Colocar el archivo en:
+- `public/documents/CV-YONNER-VARGAS-BERNATE.pdf`
+
+2. El boton de descarga en `src/pages/cv.astro` ya apunta a esa ruta.
+
+## Licencia
 
 MIT
-
----
-
-Desarrollado con ❤️ usando Astro
-

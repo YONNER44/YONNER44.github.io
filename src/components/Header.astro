@@ -5,20 +5,19 @@ const { pathname } = Astro.url
 const subpath = pathname.match(/[^/]+/g)
 import Container from "@components/Container.astro"
 import { Image } from "astro:assets"
-import logo from "@assets/carca22.png"
+import logoDark from "@assets/logonegro.png"
+import logoLight from "@assets/logoblanco.png"
 const BASE_URL = import.meta.env.BASE_URL
 ---
 
-<header id="header" class="fixed top-0 w-full h-16 z-50 ">
+<header id="header" class="fixed top-0 w-full h-20 z-50 ">
   <Container size="md">
     <div class="relative h-full w-full">
       <div class="absolute left-0 top-1/2 -translate-y-1/2 flex gap-1 font-semibold">
-        <a href="/" class="flex gap-3 items-center text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-          <div class="w-14 h-14 rounded-full flex items-center justify-center bg-black dark:bg-transparent overflow-hidden">
-               <Image src={logo} alt="dsx Logo" width={44} height={44} class="w-12 h-12 object-contain p-1" />
-          </div>
-          <div>
-            {SITE.TITLE}
+        <a href="/" class="flex items-center text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+          <div class="h-20 overflow-visible flex items-center">
+            <Image src={logoDark} alt={`${SITE.TITLE} logo`} width={560} height={140} class="block dark:hidden h-16 md:h-20 w-auto object-contain origin-left scale-[2.4]" />
+            <Image src={logoLight} alt={`${SITE.TITLE} logo`} width={560} height={140} class="hidden dark:block h-16 md:h-20 w-auto object-contain origin-left scale-[2.4]" />
           </div>
         </a>
       </div>

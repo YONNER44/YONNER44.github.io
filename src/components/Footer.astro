@@ -2,7 +2,9 @@
 import { SITE, SOCIALS } from "@consts"
 import Container from "@components/Container.astro"
 import { Image } from "astro:assets"
-import logo from "@assets/carca22.png"
+import logoDark from "@assets/logonegro.png"
+import logoLight from "@assets/logoblanco.png"
+import logoDisrup from "@assets/logosdisrup.png"
 ---
 
 <footer class="relative bg-white dark:bg-black">
@@ -26,13 +28,27 @@ import logo from "@assets/carca22.png"
     <section class=" py-5 overflow-hidden whitespace-nowrap border-t border-black/10 dark:border-white/25">
       <Container size="md">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div class="flex flex-col items-center sm:items-start">
-            <a href="/" class="flex gap-3 items-center w-fit font-semibold text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-              <div class="w-14 h-14 rounded-full flex items-center justify-center bg-black dark:bg-transparent overflow-hidden">
-               <Image src={logo} alt="dsx Logo" width={44} height={44} class="w-12 h-12 object-contain p-1" />
-          </div>
-              {SITE.TITLE}
+          <div class="flex items-center justify-center sm:justify-start gap-8">
+            <a href="/" class="flex items-center w-fit font-semibold text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+              <div class="h-20 md:h-24 flex items-center">
+                <Image src={logoDark} alt={`${SITE.TITLE} logo`} width={560} height={140} class="block dark:hidden h-full w-auto object-contain" />
+                <Image src={logoLight} alt={`${SITE.TITLE} logo`} width={560} height={140} class="hidden dark:block h-full w-auto object-contain" />
+              </div>
             </a>
+            <div class="flex items-center gap-3">
+              <a
+                href="https://disruptiveintech.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ir al sitio de Disruptive"
+                class="h-16 md:h-20 flex items-center"
+              >
+                <Image src={logoDisrup} alt={`${SITE.TITLE} disruptive logo`} width={560} height={140} class="h-full w-auto object-contain" />
+              </a>
+              <span class="text-sm md:text-base font-medium text-current">
+                Alianza con Disruptive
+              </span>
+            </div>
           </div>
           <div class="flex gap-2 justify-center sm:justify-end items-center">
             <span class="relative flex h-3 w-3">
