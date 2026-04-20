@@ -1,12 +1,13 @@
 ---
 company: "Disruptive Information Technologies"
-role: "Desarrollador Frontend"
-dateStart: "04/01/2025"
-dateEnd: "05/31/2025"
+role: "Desarrollador Full Stack"
+dateStart: "09/01/2025"
+dateEnd: "02/28/2026"
 ---
 
-Desarrollo de interfaces web como freelancer. Prestación de servicios profesionales enfocados en frontend.
+Desarrollo de Internship, plataforma para reservas de alojamientos, transportes y pasantías para estudiantes disponible en tres idiomas. Trabajo remoto desde Bogotá.
 
-- Maquetación de interfaces modernas y responsivas
-- Desarrollo con Typescript, Tailwinds CSS
-- Implementación de componentes reutilizables
+- Desarrollo full-stack con TypeScript y Tailwind CSS
+- Implementación de funcionalidades multiidioma
+- Diseño e implementación de plataforma de reservas
+- Trabajo en equipo con metodologías ágiles

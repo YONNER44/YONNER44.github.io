@@ -1,6 +1,6 @@
 ---
 title: "Curriculum Vitae"
-summary: "Desarrollador Frontend especializado en React, TypeScript y Tailwind CSS. Experiencia en liderazgo de proyectos y desarrollo full stack."
+summary: "Tecnólogo en Análisis y Desarrollo de Software con experiencia en desarrollo full-stack y front-end. Especializado en React, TypeScript, Node.js e integración con IA."
 date: "01/07/2026"
 draft: false
 tags:

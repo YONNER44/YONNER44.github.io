@@ -2,8 +2,7 @@
 import { SITE, SOCIALS } from "@consts"
 import Container from "@components/Container.astro"
 import { Image } from "astro:assets"
-import logoDark from "@assets/logonegro.png"
-import logoLight from "@assets/logoblanco.png"
+import logoHexis from "@assets/logoFreelanze.png"
 import logoDisrup from "@assets/logosdisrup.png"
 ---
 
@@ -25,79 +24,158 @@ import logoDisrup from "@assets/logosdisrup.png"
       </Container>
     </section>
   
-    <section class=" py-5 overflow-hidden whitespace-nowrap border-t border-black/10 dark:border-white/25">
-      <Container size="md">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div class="flex items-center justify-center sm:justify-start gap-8">
-            <a href="/" class="flex items-center w-fit font-semibold text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-              <div class="h-20 md:h-24 flex items-center">
-                <Image src={logoDark} alt={`${SITE.TITLE} logo`} width={560} height={140} class="block dark:hidden h-full w-auto object-contain" />
-                <Image src={logoLight} alt={`${SITE.TITLE} logo`} width={560} height={140} class="hidden dark:block h-full w-auto object-contain" />
+    <section class="py-6 border-t border-black/10 dark:border-white/25">
+      <div class="px-4 sm:px-6 md:px-12">
+        <!-- Mobile Layout -->
+        <div class="md:hidden space-y-6">
+          <!-- Logos Section - Vertical Stack -->
+          <div class="space-y-4">
+            <!-- HEXIS Logo -->
+            <a href="/" class="flex flex-col items-center gap-2 hover:opacity-80 transition-opacity">
+              <Image src={logoHexis} alt="Hexis logo" width={560} height={140} class="h-12 w-auto object-contain flex-shrink-0" />
+              <div class="flex flex-col items-center min-w-0">
+                <span class="text-sm font-bold text-current">HEXIS</span>
+                <span class="text-xs font-medium text-current leading-tight text-center">
+                  CODE MEETS DESIGN
+                </span>
               </div>
             </a>
-            <div class="flex items-center gap-3">
-              <a
-                href="https://disruptiveintech.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Ir al sitio de Disruptive"
-                class="h-16 md:h-20 flex items-center"
-              >
-                <Image src={logoDisrup} alt={`${SITE.TITLE} disruptive logo`} width={560} height={140} class="h-full w-auto object-contain" />
-              </a>
-              <span class="text-sm md:text-base font-medium text-current">
+
+            <!-- Alianza Logo -->
+            <a
+              href="https://disruptiveintech.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col items-center gap-2 hover:opacity-80 transition-opacity"
+            >
+              <Image src={logoDisrup} alt={`${SITE.TITLE} disruptive logo`} width={560} height={140} class="h-10 w-auto object-contain flex-shrink-0" />
+              <span class="text-sm font-medium text-current text-center">
                 Alianza con Disruptive
               </span>
-            </div>
+            </a>
           </div>
-          <div class="flex gap-2 justify-center sm:justify-end items-center">
-            <span class="relative flex h-3 w-3">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-            </span>
-            Todos los sistemas normales
-          </div>
-        </div>
-      </Container>
-    </section>
-  
-    <section class=" py-5 overflow-hidden whitespace-nowrap border-t border-black/10 dark:border-white/25">
-      <Container size="md">
-        <div class="h-full grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div class="order-2 sm:order-1 flex flex-col items-center justify-center sm:items-start">
-            <div class="legal">
-              <a href="/legal/terms" class="text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-                Terminos
-              </a> |
-              <a href="/legal/privacy" class="text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+
+          <!-- Legal Section -->
+          <div class="text-center">
+            <div class="legal text-xs mb-1">
+              <a href="/legal/terms" class="text-current hover:text-black dark:hover:text-white transition-colors">
+                Términos
+              </a>
+              <span class="text-black/30 dark:text-white/30"> | </span>
+              <a href="/legal/privacy" class="text-current hover:text-black dark:hover:text-white transition-colors">
                 Privacidad
               </a>
             </div>
-            <div class="text-sm mt-2">
-              &copy; 2026 | Todos los derechos reservados
-            </div>
+            <span class="text-xs text-black/30 dark:text-white/30">
+              &copy; 2026 | Todos los derechos
+            </span>
           </div>
-  
-          <div class="order-1 sm:order-2 flex justify-center sm:justify-end">
-            <div class="flex flex-wrap gap-1 items-center justify-center">
+
+          <!-- Social + Status Section -->
+          <div class="flex items-center justify-center gap-3">
+            <div class="flex gap-2">
               {
                 SOCIALS.map((SOCIAL) => (
                   <a 
                     href={SOCIAL.HREF} 
                     target="_blank" 
                     aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`} 
-                    class="group size-10 rounded-full p-2 items-center justify-center hover:bg-black/5 dark:hover:bg-white/20  blend"
+                    class="group size-9 rounded-full p-2 items-center justify-center hover:bg-black/5 dark:hover:bg-white/20 flex flex-shrink-0"
                   >
-                    <svg class="size-full fill-current group-hover:fill-black group-hover:dark:fill-white blend">
+                    <svg class="size-full fill-current group-hover:fill-black group-hover:dark:fill-white">
                       <use href={`/social.svg#${SOCIAL.ICON}`} />
                     </svg>
                   </a>
                 ))
               }
-              </div>
+            </div>
+
+            <div class="flex gap-2 items-center text-xs">
+              <span class="relative flex h-2 w-2 flex-shrink-0">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span>Sistemas normales</span>
+            </div>
           </div>
         </div>
-      </Container>
+
+        <!-- Desktop Layout -->
+        <div class="hidden md:flex md:items-center md:justify-between md:gap-8">
+          <!-- Left: Logos -->
+          <div class="flex items-center gap-5 min-w-0">
+            <a href="/" class="flex items-center flex-shrink-0 hover:opacity-80 transition-opacity">
+              <Image src={logoHexis} alt="Hexis logo" width={560} height={140} class="h-16 w-auto object-contain" />
+              <div class="flex flex-col -ml-1">
+                <span class="text-sm font-bold text-current">HEXIS</span>
+                <span class="text-xs font-medium text-current">
+                  WHERE CODE<br />MEETS DESIGN
+                </span>
+              </div>
+            </a>
+            
+            <div class="w-px h-14 bg-black/10 dark:bg-white/10 flex-shrink-0"></div>
+            
+            <a
+              href="https://disruptiveintech.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="h-12 flex items-center flex-shrink-0 gap-1"
+            >
+              <Image src={logoDisrup} alt={`${SITE.TITLE} disruptive logo`} width={560} height={140} class="h-full w-auto object-contain" />
+              <span class="text-sm md:text-base font-medium text-current whitespace-nowrap flex-shrink-0">
+                Alianza con Disruptive
+              </span>
+            </a>
+          </div>
+
+          <!-- Center: Legal -->
+          <div class="flex items-center gap-3 text-sm flex-shrink-0">
+            <span class="text-black/30 dark:text-white/30">•</span>
+            <div class="legal whitespace-nowrap">
+              <a href="/legal/terms" class="text-current hover:text-black dark:hover:text-white transition-colors">
+                Términos
+              </a>
+              <span class="text-black/30 dark:text-white/30"> | </span>
+              <a href="/legal/privacy" class="text-current hover:text-black dark:hover:text-white transition-colors">
+                Privacidad
+              </a>
+            </div>
+            <span class="text-black/30 dark:text-white/30">•</span>
+            <span class="whitespace-nowrap">
+              &copy; 2026 | Todos los derechos
+            </span>
+          </div>
+
+          <!-- Right: Social + Status -->
+          <div class="flex items-center gap-4 flex-shrink-0">
+            <div class="flex gap-1">
+              {
+                SOCIALS.map((SOCIAL) => (
+                  <a 
+                    href={SOCIAL.HREF} 
+                    target="_blank" 
+                    aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`} 
+                    class="group size-10 rounded-full p-2 items-center justify-center hover:bg-black/5 dark:hover:bg-white/20 flex flex-shrink-0"
+                  >
+                    <svg class="size-full fill-current group-hover:fill-black group-hover:dark:fill-white">
+                      <use href={`/social.svg#${SOCIAL.ICON}`} />
+                    </svg>
+                  </a>
+                ))
+              }
+            </div>
+
+            <div class="flex gap-2 items-center text-sm whitespace-nowrap flex-shrink-0">
+              <span class="relative flex h-2.5 w-2.5 flex-shrink-0">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+              </span>
+              <span>Todos los sistemas normales</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 

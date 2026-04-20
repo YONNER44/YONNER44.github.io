@@ -25,90 +25,18 @@ const images = [img1, img2, img3, img4];
         class="bg-white dark:bg-[rgb(var(--gray-999))] rounded-3xl p-4 sm:p-8 md:p-12 shadow-2xl border dark:border-[rgb(var(--gray-800))]"
       >
         <!-- Header con botón volver -->
-        <div class="relative mb-8 md:mb-12">
-          <a
-            href="/projects"
-            class="md:absolute static top-0 left-0 inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 bg-black dark:bg-white rounded-lg hover:shadow-lg hover:scale-105 hover:-translate-x-1 transition-all duration-300 z-10 font-semibold no-underline text-white dark:text-black group mb-6 md:mb-0"
-          >
-            <svg
-              class="w-5 h-5 stroke-[2.5] group-hover:-translate-x-1 transition-transform duration-300"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 19l-7-7 7-7"></path>
-            </svg>
-            Volver
-          </a>
+        <div class="mb-8 md:mb-12">
           <div class="text-center">
-            <!-- Logo del Proyecto y Botón -->
-            <div
-              class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 mb-6"
-            >
-              <div
-                class="w-24 h-24 md:w-32 md:h-32 bg-[rgb(var(--accent-light)/0.1)] rounded-3xl flex items-center justify-center shadow-lg p-3 md:p-4"
-              >
-                <Image
-                  src={logoDsx}
-                  alt="dsx Logo"
-                  width={128}
-                  height={128}
-                  class="w-full h-full object-contain"
-                />
+            <!-- Logo del Proyecto -->
+            <div class="flex flex-col items-center justify-center gap-4 md:gap-6 mb-6">
+              <div class="w-24 h-24 md:w-32 md:h-32 bg-[rgb(var(--accent-light)/0.1)] rounded-3xl flex items-center justify-center shadow-lg p-3 md:p-4">
+                <Image src={logoDsx} alt="dsx Logo" width={128} height={128} class="w-full h-full object-contain" />
               </div>
-              <a
-                href="https://www.ds24siete.com/landing/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group relative inline-flex items-center gap-2 md:gap-3 px-6 py-3 md:px-8 md:py-4 bg-black dark:bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 no-underline"
-              >
-                <div
-                  class="absolute inset-0 bg-gradient-to-r from-[rgb(var(--accent-dark)/0.2)] to-[rgb(var(--accent-light)/0.2)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                </div>
-                <svg
-                  class="w-5 h-5 md:w-6 md:h-6 text-white dark:text-black relative z-10 group-hover:scale-110 transition-transform duration-300"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                  ></path>
-                </svg>
-                <span
-                  class="text-white dark:text-black font-bold text-base md:text-lg relative z-10 whitespace-nowrap"
-                  >Visitar Sitio</span
-                >
-                <svg
-                  class="w-4 h-4 md:w-5 md:h-5 text-white dark:text-black relative z-10 group-hover:translate-x-1 transition-transform duration-300"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                </svg>
-              </a>
             </div>
-            <h1
-              class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-3 md:mb-4 text-[rgb(var(--gray-dark))] dark:text-white tracking-tight drop-shadow-lg"
-            >
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-3 md:mb-4 text-[rgb(var(--gray-dark))] dark:text-white tracking-tight drop-shadow-lg">
               DS24/7
             </h1>
-            <p
-              class="text-lg md:text-xl font-medium text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-light))] mb-4 md:mb-6"
-            >
+            <p class="text-lg md:text-xl font-medium text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-light))] mb-4 md:mb-6">
               Plataforma Deportiva
             </p>
             <div
@@ -502,6 +430,26 @@ const images = [img1, img2, img3, img4];
             </h2>
             <Carrousel images={images} client:load />
           </section>
+
+          <!-- Botones de Navegación -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6 mt-8 border-t border-black/10 dark:border-white/10">
+            <a href="/projects" class="inline-flex items-center gap-2 px-6 py-3 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 rounded-lg transition-all duration-300 no-underline font-semibold text-[rgb(var(--gray-dark))] dark:text-white group">
+              <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+              </svg>
+              Volver a projects
+            </a>
+            <a href="https://www.ds24siete.com/landing/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-black dark:bg-white rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300 no-underline font-semibold text-white dark:text-black group">
+              <svg class="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+              </svg>
+              Visitar Sitio
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+            </a>
+          </div>
+
         </div>
       </div>
     </div>

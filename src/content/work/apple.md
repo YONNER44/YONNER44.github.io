@@ -1,13 +1,13 @@
 ---
 company: "Disruptive Information Technologies"
-role: "Desarrollador Frontend"
-dateStart: "09/01/2025"
+role: "Programador Full Stack"
+dateStart: "03/01/2026"
 dateEnd: "Ahora"
 ---
 
-Desarrollo de interfaces de usuario modernas y responsivas. Trabajo en remoto como prestador de servicios.
+Desarrollo de PharmaAI, sistema de automatización para farmacias con inteligencia artificial mediante el Modelo OpenAI. Trabajo remoto desde Bogotá.
 
-- Desarrollo de interfaces con React, Vue o frameworks modernos
-- Implementación de diseños responsivos con Tailwind CSS
-- Optimización de rendimiento frontend
-- Integración con APIs REST
+- Integración con Modelo OpenAI para automatización de tareas
+- Desarrollo full-stack en entorno remoto
+- Implementación de sistemas de IA en aplicaciones web
+- Desarrollo de interfaces para automatización de farmacias

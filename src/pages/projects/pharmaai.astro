@@ -2,7 +2,7 @@
 import PageLayout from "@layouts/PageLayout.astro"
 import Container from "@components/Container.astro"
 import { Image } from "astro:assets"
-import logoInterns from "@assets/logointerns.png"
+import logoPharmaAI from "@assets/logoautomatizacion.png"
 
 // Importa tus imágenes
 import img1 from "@assets/intenrship/img1.png";
@@ -13,7 +13,7 @@ import Carrousel from "@components/Carrousel.tsx";
 const images = [img1, img2, img3, img4];
 ---
 
-<PageLayout title="InternshipHub" description="Plataforma integral de pasantías internacionales con gestión de alojamiento, transporte y pagos">
+<PageLayout title="Automatización WhatsApp" description="Sistema de recolección automática de precios de medicamentos vía WhatsApp Web con IA">
   <Container size="2xl">
     <div class="animate max-w-5xl mx-auto py-8 mt-16">
       
@@ -26,16 +26,16 @@ const images = [img1, img2, img3, img4];
             <!-- Logo del Proyecto -->
             <div class="flex flex-col items-center justify-center gap-4 md:gap-6 mb-6">
               <div class="w-24 h-24 md:w-32 md:h-32 bg-white dark:bg-white rounded-3xl flex items-center justify-center shadow-lg p-3 md:p-4">
-                <Image src={logoInterns} alt="INTENRSHIP Logo" class="w-full h-full object-contain" />
+                <Image src={logoPharmaAI} alt="PharmaAI Logo" class="w-full h-full object-contain" />
               </div>
             </div>
-            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-3 md:mb-4 text-[rgb(var(--gray-dark))] dark:text-white tracking-tight drop-shadow-lg">InternshipHub</h1>
-            <p class="text-lg md:text-xl font-medium text-[rgb(var(--gray-dark))] mb-4">Sistema de gestión de alojamiento y pasantías empresariales</p>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-3 md:mb-4 text-[rgb(var(--gray-dark))] dark:text-white tracking-tight drop-shadow-lg">Automatización WhatsApp</h1>
+            <p class="text-lg md:text-xl font-medium text-[rgb(var(--gray-dark))] mb-4">Sistema de recolección automática de precios de medicamentos vía WhatsApp Web</p>
             <div class="flex items-center justify-center gap-2 text-sm text-[rgb(var(--gray))]">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
               </svg>
-              <span>Septiembre 2025 - Actualidad</span>
+              <span>Marzo 2026 - Actualidad</span>
             </div>
           </div>
         </div>
@@ -47,7 +47,9 @@ const images = [img1, img2, img3, img4];
           <section class="bg-[rgb(var(--gray-light))] dark:bg-[rgb(var(--gray-800))] rounded-2xl p-6 md:p-8 shadow-md">
             <h2 class="text-2xl font-bold text-[rgb(var(--gray-dark))] dark:text-white mb-4">Descripción del Proyecto</h2>
             <p class="leading-relaxed text-lg text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))]">
-              <strong>InternshipHub</strong> es una plataforma integral que conecta estudiantes con oportunidades de prácticas profesionales a nivel internacional. Sistema multifuncional para gestión de pasantías empresariales, servicios de alojamiento, transporte, pagos, chat en tiempo real y sistema administrativo completo. Desarrollada con arquitectura hexagonal (DDD/CQRS) y soporta múltiples países, idiomas y monedas.
+              Sistema de recolección automática de precios de medicamentos vía WhatsApp Web. Los proveedores envían sus listas de precios (texto o imagen) 
+              y el sistema las extrae con IA, las organiza y las sincroniza automáticamente en Google Sheets y Excel. Arquitectura containerizada con Docker Compose, 
+              backend FastAPI, frontend React y sincronización en tiempo real.
             </p>
           </section>
 
@@ -71,8 +73,8 @@ const images = [img1, img2, img3, img4];
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
                 <div>
-                  <h3 class="font-semibold text-[rgb(var(--gray-dark))] dark:text-white mb-1">Gestión de Pasantías</h3>
-                  <p class="text-sm text-[rgb(var(--gray-dark))]">Sistema integral: publicación, búsqueda, aplicación, selección multinivel y contratos de pasantías</p>
+                  <h3 class="font-semibold text-[rgb(var(--gray-dark))] dark:text-white mb-1">OCR + Extracción con IA</h3>
+                  <p class="text-sm text-[rgb(var(--gray-dark))]">OCR de imágenes y extracción de precios con OpenAI (GPT-4o-mini)</p>
                 </div>
               </div>
               <div class="flex gap-3">
@@ -80,8 +82,8 @@ const images = [img1, img2, img3, img4];
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
                 <div>
-                  <h3 class="font-semibold text-[rgb(var(--gray-dark))] dark:text-white mb-1">Servicios de Alojamiento</h3>
-                  <p class="text-sm text-[rgb(var(--gray-dark))]">Gestión completa con mapas interactivos, disponibilidad, reservas y contratos</p>
+                  <h3 class="font-semibold text-[rgb(var(--gray-dark))] dark:text-white mb-1">Sincronización Google Sheets</h3>
+                  <p class="text-sm text-[rgb(var(--gray-dark))]">Integración en tiempo real con Google Sheets API y descargas a Excel</p>
                 </div>
               </div>
               <div class="flex gap-3">
@@ -89,8 +91,8 @@ const images = [img1, img2, img3, img4];
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
                 <div>
-                  <h3 class="font-semibold text-[rgb(var(--gray-dark))] dark:text-white mb-1">Sistema de Transporte</h3>
-                  <p class="text-sm text-[rgb(var(--gray-dark))]">Gestión de servicios de transporte, vehículos y servicios adicionales</p>
+                  <h3 class="font-semibold text-[rgb(var(--gray-dark))] dark:text-white mb-1">Fuzzy Matching</h3>
+                  <p class="text-sm text-[rgb(var(--gray-dark))]">Matching inteligente de medicamentos con reconocimiento de similitudes</p>
                 </div>
               </div>
               <div class="flex gap-3">
@@ -98,8 +100,8 @@ const images = [img1, img2, img3, img4];
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
                 <div>
-                  <h3 class="font-semibold text-[rgb(var(--gray-dark))] dark:text-white mb-1">Sistema de Pagos Integrado</h3>
-                  <p class="text-sm text-[rgb(var(--gray-dark))]">Stripe integrado: pagos, facturación automática, créditos y comisiones</p>
+                  <h3 class="font-semibold text-[rgb(var(--gray-dark))] dark:text-white mb-1">Docker Compose</h3>
+                  <p class="text-sm text-[rgb(var(--gray-dark))]">Arquitectura containerizada con PostgreSQL, FastAPI, React + nginx y Node.js</p>
                 </div>
               </div>
               <div class="flex gap-3">
@@ -107,17 +109,8 @@ const images = [img1, img2, img3, img4];
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
                 <div>
-                  <h3 class="font-semibold text-[rgb(var(--gray-dark))] dark:text-white mb-1">Chat en Tiempo Real</h3>
-                  <p class="text-sm text-[rgb(var(--gray-dark))]">Mensajería instantánea con WebSockets, 1-1 y grupal, estado de lectura</p>
-                </div>
-              </div>
-              <div class="flex gap-3">
-                <svg class="w-6 h-6 text-[rgb(var(--accent-dark))] flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <div>
-                  <h3 class="font-semibold text-[rgb(var(--gray-dark))] dark:text-white mb-1">Internacionalización Avanzada</h3>
-                  <p class="text-sm text-[rgb(var(--gray-dark))]">5 idiomas (es, en, nl, fr, pap) y 7 países/regiones con ruteo dinámico</p>
+                  <h3 class="font-semibold text-[rgb(var(--gray-dark))] dark:text-white mb-1">Gestor de Proveedores</h3>
+                  <p class="text-sm text-[rgb(var(--gray-dark))]">Gestión automática de números de WhatsApp y comunicación bidireccional</p>
                 </div>
               </div>
             </div>
@@ -127,26 +120,14 @@ const images = [img1, img2, img3, img4];
           <section class="bg-[rgb(var(--gray-light))] dark:bg-[rgb(var(--gray-800))] rounded-2xl p-6 md:p-8 shadow-md">
             <h2 class="text-2xl font-bold text-[rgb(var(--gray-dark))] dark:text-white mb-5">Stack Tecnológico</h2>
             <div class="flex flex-wrap gap-3">
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Next.js 15</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">React 18</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">NestJS 10</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">TypeScript</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Tailwind CSS</span>
+              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">React</span>
+              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">FastAPI</span>
+              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Python 3.11</span>
+              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Node.js</span>
+              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Docker Compose</span>
               <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">PostgreSQL</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Prisma ORM</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Redis</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Socket.io</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Bull Queues</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Stripe</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">AWS S3</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">JWT</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Passport.js</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Zustand</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">TanStack Query</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">i18next</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Leaflet Maps</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Swagger/OpenAPI</span>
-              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Docker</span>
+              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">OpenAI API</span>
+              <span class="px-4 py-2 text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))] rounded-full text-sm font-medium">Google Sheets API</span>
             </div>
           </section>
 
@@ -158,31 +139,31 @@ const images = [img1, img2, img3, img4];
                 <svg class="w-6 h-6 text-[rgb(var(--accent-dark))] dark:text-[rgb(var(--accent-light))] flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                 </svg>
-                <span class="leading-relaxed text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))]">Arquitectura hexagonal (DDD/CQRS) implementada para máxima escalabilidad y testabilidad</span>
+                <span class="leading-relaxed text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))]">Integración exitosa con WhatsApp Web.js para captura automática de mensajes</span>
               </li>
               <li class="flex gap-3 items-start">
                 <svg class="w-6 h-6 text-[rgb(var(--accent-dark))] dark:text-[rgb(var(--accent-light))] flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                 </svg>
-                <span class="leading-relaxed text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))]">Sistema de autenticación multiproveedor: credenciales propias + OAuth con JWT seguro</span>
+                <span class="leading-relaxed text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))]">OCR avanzado y extracción de datos con OpenAI GPT-4o-mini de imágenes de listas de precios</span>
               </li>
               <li class="flex gap-3 items-start">
                 <svg class="w-6 h-6 text-[rgb(var(--accent-dark))] dark:text-[rgb(var(--accent-light))] flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                 </svg>
-                <span class="leading-relaxed text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))]">Integración completa con Stripe para pagos, facturación y gestión de comisiones automáticas</span>
+                <span class="leading-relaxed text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))]">Sincronización automática en Google Sheets con colorizaci  ón de precios más bajos</span>
               </li>
               <li class="flex gap-3 items-start">
                 <svg class="w-6 h-6 text-[rgb(var(--accent-dark))] dark:text-[rgb(var(--accent-light))] flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                 </svg>
-                <span class="leading-relaxed text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))]">Chat en tiempo real con WebSockets, colas Bull para procesamiento asincrónico y Redis para cache</span>
+                <span class="leading-relaxed text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))]">Arquitectura Docker Compose escalable con PostgreSQL, FastAPI, React + nginx y Node.js</span>
               </li>
               <li class="flex gap-3 items-start">
                 <svg class="w-6 h-6 text-[rgb(var(--accent-dark))] dark:text-[rgb(var(--accent-light))] flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                 </svg>
-                <span class="leading-relaxed text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))]">Frontend responsivo con mapas interactivos, búsqueda avanzada y 22 módulos funcionales independientes</span>
+                <span class="leading-relaxed text-[rgb(var(--gray-dark))] dark:text-[rgb(var(--gray-300))]">Panel administrativo con gestión de proveedores, configuración de credenciales y exportación a Excel</span>
               </li>
             </ul>
           </section>
@@ -203,7 +184,7 @@ const images = [img1, img2, img3, img4];
               </svg>
               Volver a projects
             </a>
-            <a href="https://ish.disruptiveintech.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-black dark:bg-white rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300 no-underline font-semibold text-white dark:text-black group">
+            <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-black dark:bg-white rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300 no-underline font-semibold text-white dark:text-black group">
               <svg class="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
               </svg>
