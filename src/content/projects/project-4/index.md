@@ -5,6 +5,7 @@ date: "Mar 01 2026"
 draft: false
 tags:
 - React
+- Tailwind CSS
 - FastAPI
 - Python
 - Node.js
