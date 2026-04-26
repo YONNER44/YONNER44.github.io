@@ -2,8 +2,8 @@ import type { Site, Page, Links, Socials } from "@types"
 
 // Global
 export const SITE: Site = {
-  TITLE: "Arca Software",
-  DESCRIPTION: "Bienvenido a Arca Software, un portafolio de desarrollador y diseñador.",
+  TITLE: "HEXIS",
+  DESCRIPTION: "Bienvenido a HEXIS, un portafolio de desarrollador y diseñador.",
   AUTHOR: "Yonner Vargas",
 }
 

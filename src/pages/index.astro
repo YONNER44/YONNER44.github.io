@@ -3,9 +3,49 @@ import { getCollection, type CollectionEntry } from "astro:content"
 import PageLayout from "@layouts/PageLayout.astro"
 import ArrowCard from "@components/ArrowCard"
 import StackCard from "@components/StackCard.astro"
+import CertificateViewer from "@components/CertificateViewer"
 import { SITE, SOCIALS } from "@consts"
 import TwinklingStars from "@components/TwinklingStars.astro"
 import MeteorShower from "@components/MeteorShower.astro"
+
+import certSprintBoot from "@assets/Cursos/CertificadoInternacionalSprintBoot.pdf?url"
+import certCiberseguridad from "@assets/Cursos/Curso-ciberseguridad-trabajo.pdf?url"
+import certIngles from "@assets/Cursos/Curso-ingles-a1-principiantes.pdf?url"
+import certUxFundations from "@assets/Cursos/Foundations_of_User_Experience_UX_Design.pdf?url"
+import certUxProcess from "@assets/Cursos/Start_the_UX_Design_Process_Empathize_Define_and_Ideate.pdf?url"
+
+const certificates = [
+  {
+    title: "Enterprise Full Stack with Spring Boot 4 and Angular 21",
+    issuer: "Dev Senior Code",
+    pdfUrl: certSprintBoot,
+    category: "Full Stack",
+  },
+  {
+    title: "Ciberseguridad en el Teletrabajo",
+    issuer: "Google Actívate / INCIBE",
+    pdfUrl: certCiberseguridad,
+    category: "Seguridad",
+  },
+  {
+    title: "Basic English Course A1 for Beginners",
+    issuer: "Platzi",
+    pdfUrl: certIngles,
+    category: "Idiomas",
+  },
+  {
+    title: "Foundations of User Experience (UX) Design",
+    issuer: "Google / Coursera",
+    pdfUrl: certUxFundations,
+    category: "UX Design",
+  },
+  {
+    title: "Start the UX Design Process: Empathize, Define and Ideate",
+    issuer: "Google / Coursera",
+    pdfUrl: certUxProcess,
+    category: "UX Design",
+  },
+]
 
 const posts = (await getCollection("blog"))
   .filter((post: CollectionEntry<"blog">) => !post.data.draft)
@@ -185,6 +225,16 @@ const stack = [
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <!-- Certificates Section -->
+      <section class="animate">
+        <div class="space-y-4">
+          <p class="font-semibold text-black dark:text-white">
+            Certificaciones
+          </p>
+          <CertificateViewer certificates={certificates} />
         </div>
       </section>
 
