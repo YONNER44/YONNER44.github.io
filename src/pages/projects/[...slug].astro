@@ -45,10 +45,7 @@ const redirectUrl = hasCustomRoute ? projectRoutes[project.slug] : null
 
 <PageLayout title={title} description={summary}>
   {hasCustomRoute && (
-    <>
-      <meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
-      <script set:html={`window.location.href="${redirectUrl}"`}></script>
-    </>
+    <script is:inline set:html={`window.location.replace("${redirectUrl}")`}></script>
   )}
   {!hasCustomRoute && (
   <TopLayout>
